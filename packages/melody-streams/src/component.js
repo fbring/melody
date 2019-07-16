@@ -22,10 +22,8 @@ import {
     distinctUntilChanged,
     tap,
     take,
-    catchError,
     ignoreElements,
 } from 'rxjs/operators';
-import { of } from 'rxjs';
 
 const warningTimer = timer(500).pipe(
     tap(() => {
@@ -56,7 +54,7 @@ Object.assign(Component.prototype, {
         this.propsStream.next(props);
         if (this.subscriptions.length === 0) {
             const t = this.getTransform({
-                dispatchCustomEvent(eventName, detail, options = {}) {
+                dispatchCustomEvent: (eventName, detail, options = {}) => {
                     const event = new CustomEvent(eventName, {
                         ...options,
                         detail,

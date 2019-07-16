@@ -1,12 +1,21 @@
 ## master
 
-1.2.0-22
+## 1.2.0
 
-### Bugfixes
+### Bug fixes
 - Fix melody-stream not rerendering in some cases [#112](https://github.com/trivago/melody/pull/112)
+- Warn about usage of non-breaking space [#107](https://github.com/trivago/melody/pull/107)
+- Fixed bindings of dispatchCustomEvent in `melody-streams` [#117](https://github.com/trivago/melody/pull/117)
+- Fixed `combineRefs` unsubscription in `melody-streams` [#120](https://github.com/trivago/melody/pull/120)
+- Melody sometimes removes classes from an element / element recycling without attributes [#118](https://github.com/trivago/melody/pull/118/files)
 
 ### Chore & Maintenance
 - Removes `Chai` and `Sinon` support, Migrates tests to use `Jest`'s matchers. [#103](https://github.com/trivago/melody/pull/103)
+- Drop `bundledDependencies` option in package.json's to avoid issues with yarn [#113](https://github.com/trivago/melody/pull/113)
+- Add Github Actions for automation [#109](https://github.com/trivago/melody/pull/109)
+- Update various dependencies (lerna, babel-generate, etc.) [#95](https://github.com/trivago/melody/pull/95)
+
+## 1.2.0-21.2 (beta)
 
 ## 1.2.0-5 (beta)
 
@@ -30,7 +39,6 @@
 
 - incorrect 'is' method call in melody-types [#20](https://github.com/trivago/melody/issues/20)
 - getFocusedPath can break on IE11 for svg elements [#57](https://github.com/trivago/melody/issues/57)
-
 
 ### Chore & Maintenance
 

@@ -2108,6 +2108,34 @@ export default function Spaceless(props) {
 "
 `;
 
+exports[`Compiler should correctly transform static to dynamic attrs.template 1`] = `
+"
+import { elementVoid, elementOpen, elementClose } from \\"melody-idom\\";
+export const _template = {};
+const _statics = [\\"class\\", \\"foo\\"];
+
+_template.render = function (_context) {
+    elementOpen(\\"div\\", null, null);
+
+    if (_context.foo) {
+        elementVoid(\\"div\\", \\"7*U2;JR\\", _statics);
+    } else {
+        elementVoid(\\"div\\", null, null, \\"class\\", \\"foo \\" + (_context.bar ? \\"bar\\" : \\"\\"));
+    }
+
+    elementClose(\\"div\\");
+};
+
+if (process.env.NODE_ENV !== \\"production\\") {
+    _template.displayName = \\"StaticToDynamicAttrs\\";
+}
+
+export default function StaticToDynamicAttrs(props) {
+    return _template.render(props);
+}
+"
+`;
+
 exports[`Compiler should correctly transform styles.template 1`] = `
 "
 import { text, elementOpen, elementClose, elementOpenStart, elementOpenEnd, attr } from \\"melody-idom\\";
@@ -2275,6 +2303,13 @@ When using an async component you must provide a placeholder that can be rendere
 Example:
 {% mount async 'my-component' as 'mycomp' %}
 This is the placeholder content that will be shown to your users while the async component is being loaded."
+`;
+
+exports[`Compiler should fail transforming nonbreakable space.template 1`] = `
+"ERROR: Unsupported token: Non-breaking space
+> 1 | {{ 'success_msg' | sort }}
+    |                   ^
+  2 | "
 `;
 
 exports[`Compiler should fail transforming unknown filter.template 1`] = `
@@ -2464,8 +2499,7 @@ export default function Test(props) {
 `;
 
 exports[`Compiler when converting expressions to JS 1`] = `
-Object {
-  "code": "import { text } from \\"melody-idom\\";
+"import { text } from \\"melody-idom\\";
 export const _template = {};
 export function item(name) {
   text(name != null && name !== '' ? name : \\"test\\");
@@ -2497,9 +2531,7 @@ if (process.env.NODE_ENV !== \\"production\\") {
 
 export default function Test(props) {
   return _template.render(props);
-}",
-  "map": null,
-}
+}"
 `;
 
 exports[`Compiler when converting should support dynamic attributes 1`] = `
